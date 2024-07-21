@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3awdbjej6wlq"]
+
+[ext_resource type="Script" path="res://actors/player.gd" id="1_18jes"]
+[ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="1_sncyw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8esi3"]
+radius = 39.0128
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkw20"]
+atlas = ExtResource("1_sncyw")
+region = Rect2(0, 1024, 128, 128)
+
+[node name="Player" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_18jes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8esi3")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_jkw20")
