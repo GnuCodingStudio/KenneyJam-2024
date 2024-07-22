@@ -9,7 +9,8 @@ class_name Player
 var _direction: Vector2
 
 func _process(delta):
-	_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	_direction = _get_direction_vector()
+	prints("direction", _direction)
 
 
 func _physics_process(delta):
@@ -19,3 +20,6 @@ func _physics_process(delta):
 		linear_velocity = linear_velocity.limit_length(max_speed)
 	else:
 		linear_damp = damping
+
+func _get_direction_vector() -> Vector2:
+	return Vector2.ZERO
