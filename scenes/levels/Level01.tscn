@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba0xh0ml40xnw"]
+[gd_scene load_steps=8 format=3 uid="uid://ba0xh0ml40xnw"]
 
 [ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="1_x2kkv"]
 [ext_resource type="PackedScene" uid="uid://cnqdqkqxnuaj5" path="res://actors/PlayerOne.tscn" id="2_2pjf8"]
 [ext_resource type="Script" path="res://scenes/levels/Camera.gd" id="2_r2sxb"]
 [ext_resource type="PackedScene" uid="uid://dkxhav8456jex" path="res://actors/PlayerTwo.tscn" id="3_isf1q"]
+[ext_resource type="Script" path="res://objects/Linky.gd" id="5_qumpj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bkjnq"]
 texture = ExtResource("1_x2kkv")
@@ -1616,3 +1617,8 @@ position = Vector2(1009.74, 800.179)
 
 [node name="PlayerTwo" parent="." instance=ExtResource("3_isf1q")]
 position = Vector2(1257, 803)
+
+[node name="Linky" type="Node2D" parent="." node_paths=PackedStringArray("playerOne", "playerTwo")]
+script = ExtResource("5_qumpj")
+playerOne = NodePath("../PlayerOne")
+playerTwo = NodePath("../PlayerTwo")
