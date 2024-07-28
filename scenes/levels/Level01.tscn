@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba0xh0ml40xnw"]
+[gd_scene load_steps=11 format=3 uid="uid://ba0xh0ml40xnw"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level01.gd" id="1_suqfq"]
 [ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="1_x2kkv"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scenes/levels/Camera.gd" id="2_r2sxb"]
 [ext_resource type="PackedScene" uid="uid://dkxhav8456jex" path="res://actors/PlayerTwo.tscn" id="3_isf1q"]
 [ext_resource type="Script" path="res://objects/Linky.gd" id="5_qumpj"]
+[ext_resource type="PackedScene" uid="uid://dgswviy1f8rgo" path="res://scenes/levels/BlackCircle.tscn" id="7_dbkpd"]
+[ext_resource type="PackedScene" uid="uid://b246bf3ydqiia" path="res://scenes/levels/YouFailed.tscn" id="8_axi6d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bkjnq"]
 texture = ExtResource("1_x2kkv")
@@ -1627,5 +1629,12 @@ position = Vector2(1257, 803)
 script = ExtResource("5_qumpj")
 playerOne = NodePath("../PlayerOne")
 playerTwo = NodePath("../PlayerTwo")
+
+[node name="BlackCircle" parent="." instance=ExtResource("7_dbkpd")]
+unique_name_in_owner = true
+
+[node name="YouFailed" parent="." instance=ExtResource("8_axi6d")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="link_broken" from="Linky" to="." method="_on_linky_broken"]

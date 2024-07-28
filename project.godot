@@ -82,6 +82,9 @@ locale/translations=PackedStringArray("res://resources/localization/MenuTranslat
 2d_physics/layer_1="Player1"
 2d_physics/layer_2="Player2"
 2d_physics/layer_3="Wall"
+2d_physics/layer_4="Player1Gate"
+2d_physics/layer_5="Player2Gate"
+2d_physics/layer_6="Window"
 
 [rendering]
 
