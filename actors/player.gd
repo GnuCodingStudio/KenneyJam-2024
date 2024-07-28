@@ -7,9 +7,13 @@ class_name Player
 @export var damping := 6
 
 var _direction: Vector2
+var _enabled := true
 
 func _process(delta):
-	_direction = _get_direction_vector()
+	if _enabled:
+		_direction = _get_direction_vector()
+	else:
+		_direction = Vector2.ZERO
 
 
 func _physics_process(delta):
@@ -19,6 +23,10 @@ func _physics_process(delta):
 		linear_velocity = linear_velocity.limit_length(max_speed)
 	else:
 		linear_damp = damping
+
+
+func disable():
+	_enabled = false
 
 
 func _get_direction_vector() -> Vector2:
