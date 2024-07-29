@@ -15,7 +15,7 @@ func start(size: Vector2i):
 
 func _draw():
 	var radius = max(_size.x, _size.y) * 1.2
-	draw_circle(position, radius, Color.BLACK)
+	draw_circle(Vector2.ZERO, radius, Color.BLACK)
 
 
 func _loading_finished():
