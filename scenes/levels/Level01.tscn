@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba0xh0ml40xnw"]
+[gd_scene load_steps=14 format=3 uid="uid://ba0xh0ml40xnw"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level01.gd" id="1_suqfq"]
 [ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="1_x2kkv"]
@@ -4779,6 +4779,30 @@ physics_layer_3/collision_layer = 32
 physics_layer_3/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_bkjnq")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_guyl1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 59.53
+initial_velocity_max = 321.21
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 3.0
+hue_variation_max = 0.1
+
+[sub_resource type="Gradient" id="Gradient_m30r8"]
+offsets = PackedFloat32Array(0, 0.814696)
+colors = PackedColorArray(1, 0.416354, 0, 1, 1, 0.415686, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vf3ex"]
+gradient = SubResource("Gradient_m30r8")
+width = 10
+height = 10
+fill = 1
+fill_from = Vector2(0.521368, 0.482906)
+
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_suqfq")
 
@@ -4800,6 +4824,26 @@ script = ExtResource("2_r2sxb")
 playerOne = NodePath("../PlayerOne")
 playerTwo = NodePath("../PlayerTwo")
 
+[node name="Linky" type="Node2D" parent="." node_paths=PackedStringArray("playerOne", "playerTwo")]
+script = ExtResource("5_qumpj")
+playerOne = NodePath("../PlayerOne")
+playerTwo = NodePath("../PlayerTwo")
+
+[node name="Beam" type="Line2D" parent="Linky"]
+unique_name_in_owner = true
+points = PackedVector2Array(130, 0, 16.5894, 0)
+width = 8.0
+default_color = Color(1, 0.415686, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="BeamParticles" type="GPUParticles2D" parent="Linky/Beam"]
+unique_name_in_owner = true
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_guyl1")
+texture = SubResource("GradientTexture2D_vf3ex")
+lifetime = 0.03
+metadata/_edit_lock_ = true
+
 [node name="PlayerOne" parent="." instance=ExtResource("2_2pjf8")]
 unique_name_in_owner = true
 position = Vector2(873, 859)
@@ -4810,13 +4854,9 @@ unique_name_in_owner = true
 position = Vector2(1120.26, 861.821)
 collision_mask = 45
 
-[node name="Linky" type="Node2D" parent="." node_paths=PackedStringArray("playerOne", "playerTwo")]
-script = ExtResource("5_qumpj")
-playerOne = NodePath("../PlayerOne")
-playerTwo = NodePath("../PlayerTwo")
-
 [node name="BlackCircle" parent="." instance=ExtResource("7_dbkpd")]
 unique_name_in_owner = true
+position = Vector2(-124, 6)
 
 [node name="YouFailed" parent="." instance=ExtResource("8_axi6d")]
 unique_name_in_owner = true
