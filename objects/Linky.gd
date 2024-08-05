@@ -13,15 +13,19 @@ var _broken := false
 
 
 func _process(delta):
-	beam.points[0] = playerOne.position
-	beam.points[1] = playerTwo.position
+	#beam.points[0] = playerOne.position
+	#beam.points[1] = playerTwo.position
 
 	var diff_vector = (playerTwo.position - playerOne.position)
+	var center = playerOne.position + (diff_vector / 2)
+	beam.position = center
 	var distance = diff_vector.length()
-	particles.position = playerOne.position + (diff_vector / 2)
-	particles.process_material.emission_box_extents.x = distance / 2
-	particles.amount = distance * 0.8
-	particles.rotation = playerOne.position.angle_to_point(playerTwo.position)
+	#particles.position = playerOne.position + (diff_vector / 2)
+	#particles.process_material.emission_box_extents.x = distance / 2
+	#particles.amount = distance * 0.8
+	#particles.rotation = playerOne.position.angle_to_point(playerTwo.position)
+	beam.rotation = playerOne.position.angle_to_point(playerTwo.position)
+	beam.scale.x = 1.0 / (distance / 2)
 
 	if not _broken and _is_broken():
 		_broken = true
