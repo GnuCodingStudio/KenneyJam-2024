@@ -4,12 +4,17 @@ extends Node2D
 @onready var player_one: Player = %PlayerOne
 @onready var player_two: Player = %PlayerTwo
 @onready var end_position: Node2D = %EndPosition
+@onready var stop_wall: Node2D = %StopWall
 
 
 const DISTANCE_BEFORE_LOADING_NEXT = 1280
 const DISTANCE_TO_UNLOAD_LEVEL = (2 * 1280)
 
 var _levels: Array[BasicLevel] = []
+var _possible_levels := [
+	#"res://scenes/levels/DebugLevel.tscn",
+	"res://scenes/levels/LevelLabyrinth01.tscn",
+]
 
 
 func _process(_delta):
@@ -25,7 +30,7 @@ func _process(_delta):
 
 
 func _load_next_level() -> BasicLevel:
-	return load("res://scenes/levels/DebugLevel.tscn").instantiate()
+	return load(_possible_levels.pick_random()).instantiate()
 
 
 func _is_near_the_end(player: Player) -> bool:
@@ -44,5 +49,11 @@ func _unload_old_levels() -> void:
 	for level in _levels.slice(0, -3):
 		if _is_far_from_previous(player_one, level) and _is_far_from_previous(player_two, level):
 			print("Need to free an old level")
+			_move_stop_wall_to(level.end_position)
 			_levels.erase(level)
 			level.queue_free()
+
+
+func _move_stop_wall_to(node: Node2D) -> void:
+	stop_wall.global_position = node.global_position
+	stop_wall.visible = true
