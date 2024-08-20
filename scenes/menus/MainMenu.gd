@@ -1,6 +1,13 @@
 extends Control
 
 
+@onready var start_button: Button = %StartButton
+
+
+func _ready():
+	start_button.grab_focus()
+
+
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/levels/Level01.tscn")
 
