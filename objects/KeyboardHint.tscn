@@ -1,10 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsdq08fndt7ow"]
+[gd_scene load_steps=3 format=3 uid="uid://dsdq08fndt7ow"]
 
 [ext_resource type="Script" path="res://objects/KeyboardHint.gd" id="1_3lq75"]
-[ext_resource type="Texture2D" uid="uid://b56sqk5a1y6mn" path="res://assets/image/keyboard/keyboard_z.png" id="2_g0gb8"]
-[ext_resource type="Texture2D" uid="uid://bebtjl64ecvip" path="res://assets/image/keyboard/keyboard_s.png" id="3_a5vrf"]
-[ext_resource type="Texture2D" uid="uid://di1kffji4rpub" path="res://assets/image/keyboard/keyboard_q.png" id="4_v6wm0"]
-[ext_resource type="Texture2D" uid="uid://bcmqe03bg36o5" path="res://assets/image/keyboard/keyboard_d.png" id="5_3khu0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu5uo"]
 bg_color = Color(0.133196, 0.133196, 0.133196, 1)
@@ -33,22 +29,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fu5uo")
 unique_name_in_owner = true
 modulate = Color(0.666667, 0.517647, 0.462745, 1)
 position = Vector2(104, 39)
-texture = ExtResource("2_g0gb8")
 
 [node name="DOWN" type="Sprite2D" parent="Panel"]
 unique_name_in_owner = true
 modulate = Color(0.666667, 0.517647, 0.462745, 1)
 position = Vector2(104, 103)
-texture = ExtResource("3_a5vrf")
 
 [node name="LEFT" type="Sprite2D" parent="Panel"]
 unique_name_in_owner = true
 modulate = Color(0.666667, 0.517647, 0.462745, 1)
 position = Vector2(40, 103)
-texture = ExtResource("4_v6wm0")
 
 [node name="RIGHT" type="Sprite2D" parent="Panel"]
 unique_name_in_owner = true
 modulate = Color(0.666667, 0.517647, 0.462745, 1)
 position = Vector2(168, 103)
-texture = ExtResource("5_3khu0")
