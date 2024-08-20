@@ -6,7 +6,6 @@ extends Node2D
 @onready var camera = %Camera
 @onready var black_circle = %BlackCircle
 @onready var you_failed = %YouFailed
-@onready var end_position: Node2D = %EndPosition
 
 
 func _process(_delta):

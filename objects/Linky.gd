@@ -4,7 +4,6 @@ extends Node2D
 @export var playerTwo: Player
 
 @onready var beam = %Beam
-@onready var particles = %BeamParticles
 
 signal link_broken
 
