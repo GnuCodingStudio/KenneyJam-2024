@@ -2,10 +2,17 @@ extends Control
 
 
 @onready var start_button: Button = %StartButton
+@onready var background: ColorRect = %Background
+
+var _rng = RandomNumberGenerator.new()
 
 
 func _ready():
 	start_button.grab_focus()
+	var noise = background.material.get_shader_parameter("Noise").noise
+	var over_noise = background.material.get_shader_parameter("OverNoise").noise
+	noise.seed = _rng.randi()
+	over_noise.seed = _rng.randi()
 
 
 func _on_start_button_pressed():
