@@ -2,48 +2,42 @@
   <br/><br/>
   <!-- <img src="./path/to/icon.png" width="215" /> -->
   <br/><br/>
-  
-  # Game Name
 
-![GitHub release](https://img.shields.io/github/v/release/{user-name}/{repository-name}?include_prereleases)
-![GitHub](https://img.shields.io/github/license/{user-name}/{repository-name})
+  # Linky
 
-  Short description of the game.
+![GitHub release](https://img.shields.io/github/v/release/GnuCodingStudio/Linky-KenneyJam-2024?include_prereleases)
+![GitHub](https://img.shields.io/github/license/GnuCodingStudio/Linky-KenneyJam-2024)
+
+  Inspired by KennyJam 2024, Linky is a two player shared-screen game.
+  The players are linked by Linky, a laser beam which must not be broken or interrupt.
 
   <br/>
   <!-- <img src="./path/to/game.gif" width="600" /> -->
+
+  [![Available on itch.io](/assets/image/promo/itchio.png)](https://gnucodingstudio.itch.io/linky-kenneyjam-2024)
 </div>
-
-
-## Quick start
-
-When forking this template you should:
-- [ ] Read the [Architecture document](ARCHITECTURE.md)
-- [ ] Update this README.md file & remove the "Quick start" section
 
 
 ## Feature
 
-- ✨ A list of main mecanisms of the game
-- 🎁 You can explain the main goal of users
+- ✨ Two players - Shared screen
+- 🎁 Infinie run
 - 📝 And many others are coming soon !
 
 
 ## Roadmap
 
-- [x] Something done
-- [x] Something else
-- [ ] Something to do
-- [ ] And the remaining
+- [ ] Add more rooms for more fun
+- [ ] New mechanism: Doors and keys
 
 
 ## Tech & Tools
 
-- Godot 4.2
-- Gimp
-- ...
+- Godot 4.3
+- Kenney assets
 
 
-## Download
+## Play & Download
 
-List where users can download the game.
+- [Github releases](https://github.com/GnuCodingStudio/Linky-KenneyJam-2024/releases)
+- [Itch.io](https://gnucodingstudio.itch.io/linky-kenneyjam-2024)
