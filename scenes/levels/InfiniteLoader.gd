@@ -14,6 +14,7 @@ var _levels: Array[BasicLevel] = []
 var _possible_levels := [
 	#"res://scenes/levels/DebugLevel.tscn",
 	"res://scenes/levels/LevelLabyrinth01.tscn",
+	"res://scenes/levels/LevelLabyrinth02.tscn",
 ]
 
 
