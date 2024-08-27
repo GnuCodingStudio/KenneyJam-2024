@@ -19,6 +19,9 @@ var _beginners_level := [
 ]
 var _labyrinth_levels := [
 	#"res://scenes/levels/DebugLevel.tscn",
+	"res://scenes/levels/beginner/LevelBeginner01.tscn",
+	"res://scenes/levels/beginner/LevelBeginner02.tscn",
+	"res://scenes/levels/beginner/LevelBeginner03.tscn",
 	"res://scenes/levels/LevelLabyrinth01.tscn",
 	"res://scenes/levels/LevelLabyrinth02.tscn",
 	"res://scenes/levels/LevelLabyrinth03.tscn"
