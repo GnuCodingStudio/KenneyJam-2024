@@ -68,7 +68,7 @@ linked_parent_graph_frame = 39
 input_name = "uv"
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_sbpq4"]
-size = Vector2(3424, 2228)
+size = Vector2(3376, 1690)
 title = "Main Noise"
 attached_nodes = PackedInt32Array(12, 5, 2, 4, 27, 26, 25, 23, 22, 21, 20)
 
@@ -94,7 +94,7 @@ default_value_enabled = true
 default_value = 0.001
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_c4nbn"]
-size = Vector2(2396, 2028)
+size = Vector2(2396, 1490)
 title = "Over Noise"
 attached_nodes = PackedInt32Array(32, 38, 37, 36, 34, 28, 29)
 
@@ -202,7 +202,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1017.94, -224.567)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1480, 800)

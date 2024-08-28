@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpeyhi4f1jd78"]
+[gd_scene load_steps=6 format=3 uid="uid://dpeyhi4f1jd78"]
 
 [ext_resource type="Theme" uid="uid://cwahu64hfgl1x" path="res://resources/theme/MenuTheme.tres" id="1_tjl38"]
 [ext_resource type="Script" path="res://scenes/menus/MainMenu.gd" id="2_jmfhq"]
 [ext_resource type="Material" uid="uid://bqrgweusswkfh" path="res://scenes/menus/MenuBackground.tres" id="3_4e88n"]
+[ext_resource type="Script" path="res://scenes/menus/SeedInput.gd" id="4_okwym"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1ilb"]
 
@@ -66,6 +67,21 @@ layout_mode = 2
 theme_override_constants/separation = 60
 theme_override_styles/separator = SubResource("StyleBoxEmpty_t1ilb")
 
+[node name="SeedHBox" type="HBoxContainer" parent="GlobalMargin/Center/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="GlobalMargin/Center/VBox/SeedHBox"]
+layout_mode = 2
+text = "MAIN_SEED_LABEL"
+
+[node name="SeedInput" type="LineEdit" parent="GlobalMargin/Center/VBox/SeedHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("4_okwym")
+
 [node name="StartButton" type="Button" parent="GlobalMargin/Center/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -99,6 +115,7 @@ focus_next = NodePath("../StartButton")
 focus_previous = NodePath("../CreditsButton")
 text = "MAIN_QUIT_BUTTON"
 
+[connection signal="text_changed" from="GlobalMargin/Center/VBox/SeedHBox/SeedInput" to="GlobalMargin/Center/VBox/SeedHBox/SeedInput" method="_on_text_changed"]
 [connection signal="pressed" from="GlobalMargin/Center/VBox/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="GlobalMargin/Center/VBox/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="GlobalMargin/Center/VBox/QuitButton" to="." method="_on_quit_button_pressed"]

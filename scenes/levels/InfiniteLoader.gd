@@ -11,17 +11,39 @@ const DISTANCE_BEFORE_LOADING_NEXT = 1280
 const DISTANCE_TO_UNLOAD_LEVEL = (2 * 1280)
 
 var _levels: Array[BasicLevel] = []
-var _possible_levels := [
+var _beginners_level := [
+	#"res://scenes/levels/DebugLevel.tscn",
+	"res://scenes/levels/beginner/LevelBeginner01.tscn",
+	"res://scenes/levels/beginner/LevelBeginner02.tscn",
+	"res://scenes/levels/beginner/LevelBeginner03.tscn",
+]
+var _labyrinth_levels := [
 	#"res://scenes/levels/DebugLevel.tscn",
 	"res://scenes/levels/LevelLabyrinth01.tscn",
 	"res://scenes/levels/LevelLabyrinth02.tscn",
 	"res://scenes/levels/LevelLabyrinth03.tscn"
 ]
 
+## Levels planned to be done in the order
+var _planned_levels := []
+## Levels available for the infinite random
+var _infinite_levels := []
+
+var _levels_done_count = 0
+
+
+func _ready() -> void:
+	_labyrinth_levels.shuffle()
+	
+	_planned_levels.append_array(_beginners_level)
+	_planned_levels.append_array(_labyrinth_levels)
+	
+	_infinite_levels.append("res://scenes/levels/beginner/LevelBeginner03.tscn")
+	_infinite_levels.append_array(_labyrinth_levels)
+
 
 func _process(_delta):
 	if _is_near_the_end(player_one) or _is_near_the_end(player_two):
-		print("Need to load a new level")
 		var next_level = _load_next_level()
 		next_level.position = end_position.position
 		_levels.push_back(next_level)
@@ -32,7 +54,16 @@ func _process(_delta):
 
 
 func _load_next_level() -> BasicLevel:
-	return load(_possible_levels.pick_random()).instantiate()
+	if _levels_done_count < _planned_levels.size():
+		prints("Planned level", _levels_done_count)
+		var next_level = _planned_levels[_levels_done_count]
+		_levels_done_count += 1
+		return load(next_level).instantiate()
+	else:
+		_levels_done_count += 1
+		var next_id = randi_range(0, _infinite_levels.size() - 1)
+		prints("Next random level", next_id)
+		return load(_infinite_levels[next_id]).instantiate()
 
 
 func _is_near_the_end(player: Player) -> bool:
