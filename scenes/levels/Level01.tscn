@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://ba0xh0ml40xnw"]
+[gd_scene load_steps=34 format=4 uid="uid://ba0xh0ml40xnw"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level01.gd" id="1_suqfq"]
 [ext_resource type="Script" path="res://scenes/levels/InfiniteLoader.gd" id="2_0n3ly"]
@@ -114,6 +114,53 @@ colors = PackedColorArray(0, 0, 0, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bp0yd"]
 gradient = SubResource("Gradient_o1l3i")
 
+[sub_resource type="Curve" id="Curve_05hky"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.40056, 0.99071), 0.0, 0.0, 0, 0, Vector2(0.862745, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ck241"]
+curve = SubResource("Curve_05hky")
+
+[sub_resource type="Gradient" id="Gradient_nj2b3"]
+offsets = PackedFloat32Array(0.00334448, 1)
+colors = PackedColorArray(9.49138e-05, 0.797066, 0.981412, 1, 0.827451, 0.952941, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i5o6r"]
+gradient = SubResource("Gradient_nj2b3")
+
+[sub_resource type="Curve" id="Curve_23wli"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 67.4607), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bxyrf"]
+curve = SubResource("Curve_23wli")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_okbw8"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 21.12
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 680.33
+initial_velocity_max = 827.87
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 276.35
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -60.89
+linear_accel_max = -60.89
+linear_accel_curve = SubResource("CurveTexture_bxyrf")
+scale_min = 0.14
+scale_max = 0.16
+color_ramp = SubResource("GradientTexture1D_i5o6r")
+alpha_curve = SubResource("CurveTexture_ck241")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbx15"]
+atlas = ExtResource("3_0syjs")
+region = Rect2(1408, 896, 128, 128)
+
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_suqfq")
 
@@ -219,6 +266,15 @@ material = SubResource("ShaderMaterial_wgn4e")
 scale = Vector2(4.57813, 0.3)
 texture = SubResource("GradientTexture2D_bp0yd")
 metadata/_edit_lock_ = true
+
+[node name="HitParticule" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_okbw8")
+texture = SubResource("AtlasTexture_gbx15")
+lifetime = 0.29
+one_shot = true
 
 [node name="PlayerOne" parent="." instance=ExtResource("2_2pjf8")]
 unique_name_in_owner = true
