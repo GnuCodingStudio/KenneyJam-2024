@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/image="res://assets/image/promo/background.png"
 config/icon="res://assets/image/icon.png"
 
+[autoload]
+
+Rng="*res://service/Rng.gd"
+
 [debug]
 
 shapes/collision/shape_color=Color(1, 1, 1, 0.42)

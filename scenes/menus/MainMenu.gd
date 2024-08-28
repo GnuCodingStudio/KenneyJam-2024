@@ -3,6 +3,7 @@ extends Control
 
 @onready var start_button: Button = %StartButton
 @onready var background: ColorRect = %Background
+@onready var seed_input: SeedInput = %SeedInput
 
 var _rng = RandomNumberGenerator.new()
 
@@ -13,9 +14,11 @@ func _ready():
 	var over_noise = background.material.get_shader_parameter("OverNoise").noise
 	noise.seed = _rng.randi()
 	over_noise.seed = _rng.randi()
+	seed_input.seed = _rng.randi()
 
 
 func _on_start_button_pressed():
+	Rng.set_seed(seed_input.seed)
 	get_tree().change_scene_to_file("res://scenes/levels/Level01.tscn")
 
 
