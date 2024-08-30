@@ -2,9 +2,11 @@ extends Node2D
 
 @export var playerOne: Player
 @export var playerTwo: Player
+#@export var hit_particules: GPUParticles2D
 
 @onready var beam = %Beam
-@onready var hit_particule: GPUParticles2D = %HitParticule
+@onready var hit_particules: GPUParticles2D = %HitParticules
+
 
 signal link_broken
 
@@ -27,12 +29,12 @@ func _process(delta):
 		_on_broke(broken_position)
 
 
-func _on_broke(position: Vector2) -> void:
+func _on_broke(breaking_position: Vector2) -> void:
 	beam.visible = false
 	
-	hit_particule.global_position = position
-	hit_particule.emitting = true
-	await hit_particule.finished
+	hit_particules.global_position = breaking_position
+	hit_particules.emitting = true
+	await hit_particules.finished
 	
 	link_broken.emit()
 

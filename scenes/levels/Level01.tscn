@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://ba0xh0ml40xnw"]
+[gd_scene load_steps=22 format=4 uid="uid://ba0xh0ml40xnw"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level01.gd" id="1_suqfq"]
 [ext_resource type="Script" path="res://scenes/levels/InfiniteLoader.gd" id="2_0n3ly"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scenes/levels/Camera.gd" id="2_r2sxb"]
 [ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="3_0syjs"]
 [ext_resource type="PackedScene" uid="uid://dkxhav8456jex" path="res://actors/PlayerTwo.tscn" id="3_isf1q"]
-[ext_resource type="Script" path="res://objects/Linky.gd" id="5_qumpj"]
 [ext_resource type="PackedScene" uid="uid://dgswviy1f8rgo" path="res://scenes/levels/BlackCircle.tscn" id="7_dbkpd"]
 [ext_resource type="PackedScene" uid="uid://b246bf3ydqiia" path="res://scenes/levels/YouFailed.tscn" id="8_axi6d"]
 [ext_resource type="PackedScene" uid="uid://dsdq08fndt7ow" path="res://objects/KeyboardHint.tscn" id="9_880yl"]
@@ -19,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://do21pybjwyq8q" path="res://assets/image/keyboard/keyboard_arrow_left.png" id="12_wxrot"]
 [ext_resource type="Texture2D" uid="uid://bcmqe03bg36o5" path="res://assets/image/keyboard/keyboard_d.png" id="13_1dhq1"]
 [ext_resource type="Texture2D" uid="uid://0slf2wvbyrq0" path="res://assets/image/keyboard/keyboard_arrow_right.png" id="13_fgbj7"]
+[ext_resource type="PackedScene" uid="uid://diounpccdrvmh" path="res://objects/Linky.tscn" id="15_xxdb8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7jkv"]
 atlas = ExtResource("3_0syjs")
@@ -26,140 +26,6 @@ region = Rect2(1280, 512, 128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_saqtk"]
 size = Vector2(766, 102)
-
-[sub_resource type="Shader" id="Shader_gv04h"]
-code = "shader_type canvas_item;
-
-uniform int lightning_number = 5;
-uniform vec2 amplitude = vec2(2.0,1.0);
-uniform float offset = 0.45;
-uniform float thickness = 0.02;
-uniform float speed = 3.0;
-uniform vec4 base_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
-uniform float glow_thickness = 0.08;
-uniform vec4 glow_color : source_color = vec4(0.2, 0, 0.8, 0.0);
-uniform float alpha : hint_range(0, 1) = 1.0;
-
-// plot function
-float plot(vec2 st, float pct, float half_width){
-  return  smoothstep( pct-half_width, pct, st.y) -
-          smoothstep( pct, pct+half_width, st.y);
-}
-
-vec2 hash22(vec2 uv) {
-    uv = vec2(dot(uv, vec2(127.1,311.7)),
-              dot(uv, vec2(269.5,183.3)));
-    return 2.0 * fract(sin(uv) * 43758.5453123) - 1.0;
-}
-
-float noise(vec2 uv) {
-    vec2 iuv = floor(uv);
-    vec2 fuv = fract(uv);
-    vec2 blur = smoothstep(0.0, 1.0, fuv);
-    return mix(mix(dot(hash22(iuv + vec2(0.0,0.0)), fuv - vec2(0.0,0.0)),
-                   dot(hash22(iuv + vec2(1.0,0.0)), fuv - vec2(1.0,0.0)), blur.x),
-               mix(dot(hash22(iuv + vec2(0.0,1.0)), fuv - vec2(0.0,1.0)),
-                   dot(hash22(iuv + vec2(1.0,1.0)), fuv - vec2(1.0,1.0)), blur.x), blur.y) + 0.5;
-}
-
-float fbm(vec2 n) {
-    float total = 0.0, amp = 1.0;
-    for (int i = 0; i < 7; i++) {
-        total += noise(n) * amp;
-        n += n;
-        amp *= 0.5;
-    }
-    return total;
-}
-
-
-void fragment(){
-	vec2 uv = UV;
-	vec4 color = vec4(0.0, 0.0, 0.0, 0.0);
-
-	vec2 t ;
-	float y ;
-	float pct ;
-	float buffer;
-	// add more lightning
-	for ( int i = 0; i < lightning_number; i++){
-		t = uv * amplitude + vec2(float(i), -float(i)) - TIME*speed;
-		y = fbm(t)*offset;
-		pct = plot(uv, y, thickness);
-		buffer = plot(uv, y, glow_thickness);
-		color += pct*base_color;
-		color += buffer*glow_color;
-	}
-
-	color.a *= alpha;
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgn4e"]
-shader = SubResource("Shader_gv04h")
-shader_parameter/lightning_number = 3
-shader_parameter/amplitude = Vector2(1, 1)
-shader_parameter/offset = 0.45
-shader_parameter/thickness = 0.5
-shader_parameter/speed = 1.0
-shader_parameter/base_color = Color(0.325955, 0.609426, 1, 1)
-shader_parameter/glow_thickness = 0.02
-shader_parameter/glow_color = Color(0.2, 0, 0.8, 0)
-shader_parameter/alpha = 1.0
-
-[sub_resource type="Gradient" id="Gradient_o1l3i"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bp0yd"]
-gradient = SubResource("Gradient_o1l3i")
-
-[sub_resource type="Curve" id="Curve_05hky"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.40056, 0.99071), 0.0, 0.0, 0, 0, Vector2(0.862745, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_ck241"]
-curve = SubResource("Curve_05hky")
-
-[sub_resource type="Gradient" id="Gradient_nj2b3"]
-offsets = PackedFloat32Array(0.00334448, 1)
-colors = PackedColorArray(9.49138e-05, 0.797066, 0.981412, 1, 0.827451, 0.952941, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_i5o6r"]
-gradient = SubResource("Gradient_nj2b3")
-
-[sub_resource type="Curve" id="Curve_23wli"]
-min_value = -200.0
-max_value = 200.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 67.4607), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_bxyrf"]
-curve = SubResource("Curve_23wli")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_okbw8"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 21.12
-angle_min = 1.07288e-05
-angle_max = 360.0
-spread = 180.0
-initial_velocity_min = 680.33
-initial_velocity_max = 827.87
-radial_velocity_min = -2.23517e-05
-radial_velocity_max = 276.35
-gravity = Vector3(0, 0, 0)
-linear_accel_min = -60.89
-linear_accel_max = -60.89
-linear_accel_curve = SubResource("CurveTexture_bxyrf")
-scale_min = 0.14
-scale_max = 0.16
-color_ramp = SubResource("GradientTexture1D_i5o6r")
-alpha_curve = SubResource("CurveTexture_ck241")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbx15"]
-atlas = ExtResource("3_0syjs")
-region = Rect2(1408, 896, 128, 128)
 
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_suqfq")
@@ -253,28 +119,9 @@ script = ExtResource("2_r2sxb")
 playerOne = NodePath("../PlayerOne")
 playerTwo = NodePath("../PlayerTwo")
 
-[node name="Linky" type="Node2D" parent="." node_paths=PackedStringArray("playerOne", "playerTwo")]
-z_index = 1
-position = Vector2(1026, 860)
-script = ExtResource("5_qumpj")
+[node name="Linky" parent="." node_paths=PackedStringArray("playerOne", "playerTwo") instance=ExtResource("15_xxdb8")]
 playerOne = NodePath("../PlayerOne")
 playerTwo = NodePath("../PlayerTwo")
-
-[node name="Beam" type="Sprite2D" parent="Linky"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_wgn4e")
-scale = Vector2(4.57813, 0.3)
-texture = SubResource("GradientTexture2D_bp0yd")
-metadata/_edit_lock_ = true
-
-[node name="HitParticule" type="GPUParticles2D" parent="."]
-unique_name_in_owner = true
-emitting = false
-amount = 40
-process_material = SubResource("ParticleProcessMaterial_okbw8")
-texture = SubResource("AtlasTexture_gbx15")
-lifetime = 0.29
-one_shot = true
 
 [node name="PlayerOne" parent="." instance=ExtResource("2_2pjf8")]
 unique_name_in_owner = true
