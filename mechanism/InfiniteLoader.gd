@@ -37,10 +37,10 @@ var _levels_done_count = 0
 
 func _ready() -> void:
 	_labyrinth_levels.shuffle()
-	
+
 	_planned_levels.append_array(_beginners_level)
 	_planned_levels.append_array(_labyrinth_levels)
-	
+
 	_infinite_levels.append("res://scenes/levels/beginner/LevelBeginner03.tscn")
 	_infinite_levels.append_array(_labyrinth_levels)
 
