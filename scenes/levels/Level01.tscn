@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://ba0xh0ml40xnw"]
+[gd_scene load_steps=21 format=4 uid="uid://ba0xh0ml40xnw"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level01.gd" id="1_suqfq"]
 [ext_resource type="Script" path="res://mechanism/InfiniteLoader.gd" id="2_0n3ly"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://mechanism/Camera.gd" id="2_r2sxb"]
 [ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="3_0syjs"]
 [ext_resource type="PackedScene" uid="uid://dkxhav8456jex" path="res://actors/PlayerTwo.tscn" id="3_isf1q"]
-[ext_resource type="PackedScene" uid="uid://dgswviy1f8rgo" path="res://scenes/levels/BlackCircle.tscn" id="7_dbkpd"]
-[ext_resource type="PackedScene" uid="uid://b246bf3ydqiia" path="res://scenes/levels/YouFailed.tscn" id="8_axi6d"]
 [ext_resource type="PackedScene" uid="uid://dsdq08fndt7ow" path="res://objects/KeyboardHint.tscn" id="9_880yl"]
 [ext_resource type="Texture2D" uid="uid://b56sqk5a1y6mn" path="res://assets/image/keyboard/keyboard_z.png" id="10_s016p"]
 [ext_resource type="Texture2D" uid="uid://dwgqayh0p674w" path="res://assets/image/keyboard/keyboard_arrow_up.png" id="10_savgc"]
@@ -19,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bcmqe03bg36o5" path="res://assets/image/keyboard/keyboard_d.png" id="13_1dhq1"]
 [ext_resource type="Texture2D" uid="uid://0slf2wvbyrq0" path="res://assets/image/keyboard/keyboard_arrow_right.png" id="13_fgbj7"]
 [ext_resource type="PackedScene" uid="uid://diounpccdrvmh" path="res://objects/Linky.tscn" id="15_xxdb8"]
+[ext_resource type="PackedScene" uid="uid://c0uywvko1i0mv" path="res://scenes/YouFailed.tscn" id="18_5lr28"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7jkv"]
 atlas = ExtResource("3_0syjs")
@@ -135,13 +134,10 @@ z_index = 1
 position = Vector2(1174, 861.821)
 collision_mask = 45
 
-[node name="BlackCircle" parent="." instance=ExtResource("7_dbkpd")]
-unique_name_in_owner = true
-z_index = 50
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="YouFailed" parent="." instance=ExtResource("8_axi6d")]
+[node name="YouFailed" parent="HUD" instance=ExtResource("18_5lr28")]
 unique_name_in_owner = true
-visible = false
-z_index = 50
 
 [connection signal="link_broken" from="Linky" to="." method="_on_linky_broken"]
+[connection signal="animation_finished" from="HUD/YouFailed" to="." method="_on_you_failed_animation_finished"]
