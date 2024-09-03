@@ -26,6 +26,11 @@ var _labyrinth_levels := [
 	"res://scenes/levels/LevelLabyrinth02.tscn",
 	"res://scenes/levels/LevelLabyrinth03.tscn"
 ]
+var _doors_beginners_level := [
+	"res://scenes/levels/door/DoorLearning.tscn",
+]
+var _doors_level := [
+]
 
 ## Levels planned to be done in the order
 var _planned_levels := []
@@ -40,9 +45,12 @@ func _ready() -> void:
 
 	_planned_levels.append_array(_beginners_level)
 	_planned_levels.append_array(_labyrinth_levels)
+	_planned_levels.append_array(_doors_beginners_level)
+	_planned_levels.append_array(_doors_level)
 
 	_infinite_levels.append("res://scenes/levels/beginner/LevelBeginner03.tscn")
 	_infinite_levels.append_array(_labyrinth_levels)
+	_infinite_levels.append_array(_doors_level)
 
 
 func _process(_delta):

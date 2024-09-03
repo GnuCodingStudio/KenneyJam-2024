@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cowha2lcda28h"]
+
+[sub_resource type="GDScript" id="GDScript_oey2w"]
+script/source = "class_name OnlyActivatedTrigger
+extends Node
+
+signal on_activated()
+signal on_deactivated()
+
+@export var trigger_source: Node
+
+func _ready() -> void:
+	assert(trigger_source.has_signal(\"on_activated\"), \"Trigger has no \\\"on_activated\\\" signal: %s\" % trigger_source)
+	trigger_source.on_activated.connect(_on_activated)
+
+
+func _on_activated() -> void:
+	on_activated.emit()
+"
+
+[node name="OnlyActivatedTrigger" type="Node"]
+script = SubResource("GDScript_oey2w")

@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=4 uid="uid://japxeysequmj"]
+
+[ext_resource type="Script" path="res://scenes/levels/BasicLevel.gd" id="1_k7k8f"]
+[ext_resource type="TileSet" uid="uid://bnu3gr0iqb12l" path="res://scenes/levels/TileSet.tres" id="2_xcj5o"]
+[ext_resource type="Script" path="res://mechanism/Camera.gd" id="3_8keov"]
+[ext_resource type="PackedScene" uid="uid://cnqdqkqxnuaj5" path="res://actors/PlayerOne.tscn" id="4_iepg1"]
+[ext_resource type="PackedScene" uid="uid://dkxhav8456jex" path="res://actors/PlayerTwo.tscn" id="5_ayfgi"]
+[ext_resource type="PackedScene" uid="uid://cvuuymugpkjwv" path="res://objects/PressurePlate.tscn" id="6_7vkvf"]
+[ext_resource type="PackedScene" uid="uid://dx5tegt875rd0" path="res://components/trigger/AreaActivatedTrigger.tscn" id="7_hguiw"]
+[ext_resource type="PackedScene" uid="uid://bw4vur2v61f4j" path="res://objects/Door.tscn" id="8_0pbjp"]
+[ext_resource type="PackedScene" uid="uid://d2wb5dbwmb7k6" path="res://components/triggerable/SimpleTriggerable.tscn" id="9_gnr1e"]
+[ext_resource type="PackedScene" uid="uid://cuj170821rlq3" path="res://components/triggerable/CombinedTriggerable.tscn" id="10_q6wx6"]
+
+[node name="DebugLevel" type="Node2D" node_paths=PackedStringArray("end_position")]
+script = ExtResource("1_k7k8f")
+end_position = NodePath("EndPosition")
+
+[node name="EndPosition" type="Node2D" parent="."]
+position = Vector2(-128, -640)
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD9////AAAAAAYAAQD+////AAAAAAYAAQD/////AAAAAAYAAQAAAP//AAAAAAYAAQABAP//AAAAAAYAAQACAP//AAAAAAYAAQD7//v/AAAAAAYAAQD7//z/AAAAAAYAAQD7//3/AAAAAAYAAQD7//7/AAAAAAYAAQD7////AAAAAAYAAQD8//v/AAAAAAYAAQD8//z/AAAAAAYAAQD8//3/AAAAAAYAAQD8//7/AAAAAAYAAQD8////AAAAAAYAAQD9//v/AAAAAAYAAQD9//z/AAAAAAYAAQD9//3/AAAAAAYAAQD9//7/AAAAAAYAAQD+//v/AAAAAAYAAQD+//z/AAAAAAYAAQD+//3/AAAAAAYAAQD+//7/AAAAAAYAAQD///v/AAAAAAYAAQD///z/AAAAAAYAAQD///3/AAAAAAYAAQD///7/AAAAAAYAAQAAAPv/AAAAAAYAAQAAAPz/AAAAAAYAAQAAAP3/AAAAAAYAAQAAAP7/AAAAAAYAAQABAPv/AAAAAAYAAQABAPz/AAAAAAYAAQABAP3/AAAAAAYAAQABAP7/AAAAAAYAAQACAPv/AAAAAAYAAQACAPz/AAAAAAYAAQACAP3/AAAAAAYAAQACAP7/AAAAAAYAAQADAPv/AAAAAAYAAQADAPz/AAAAAAYAAQADAP3/AAAAAAYAAQADAP7/AAAAAAYAAQADAP//AAAAAAYAAQAEAPv/AAAAAAYAAQAEAPz/AAAAAAYAAQAEAP3/AAAAAAYAAQAEAP7/AAAAAAYAAQAEAP//AAAAAAYAAQA=")
+tile_set = ExtResource("2_xcj5o")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAEAP//AAAJAAAAATD7////AAAJAAAAAWD7//v/AAAJAAAAAQAEAPv/AAAJAAAAAVACAPv/AAAKAAAAAQADAPv/AAAKAAAAAQAEAPz/AAAKAAAAAVAEAP3/AAAKAAAAAVAEAP7/AAAKAAAAAVADAP//AAAKAAAAATD8////AAAKAAAAATD7//7/AAAKAAAAAWD7//3/AAAKAAAAAWD7//z/AAAKAAAAAWA=")
+tile_set = ExtResource("2_xcj5o")
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("playerOne", "playerTwo")]
+unique_name_in_owner = true
+position = Vector2(-11, 418)
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("3_8keov")
+playerOne = NodePath("../PlayerOne")
+playerTwo = NodePath("../PlayerTwo")
+
+[node name="PlayerOne" parent="." instance=ExtResource("4_iepg1")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-185, -57)
+collision_mask = 54
+
+[node name="PlayerTwo" parent="." instance=ExtResource("5_ayfgi")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(116, -54.179)
+collision_mask = 45
+
+[node name="PressurePlate1" parent="." instance=ExtResource("6_7vkvf")]
+position = Vector2(-221, -331)
+for_player = 0
+
+[node name="AreaTrigger" parent="PressurePlate1" instance=ExtResource("7_hguiw")]
+
+[node name="PressurePlate2" parent="." instance=ExtResource("6_7vkvf")]
+position = Vector2(26, -331)
+
+[node name="AreaTrigger" parent="PressurePlate2" instance=ExtResource("7_hguiw")]
+
+[node name="SimpleDoor" parent="." instance=ExtResource("8_0pbjp")]
+position = Vector2(-437, -576)
+
+[node name="SimpleTriggerable" parent="SimpleDoor" node_paths=PackedStringArray("trigger") instance=ExtResource("9_gnr1e")]
+trigger = NodePath("../../PressurePlate1/AreaTrigger")
+activating_method = "open"
+deactivating_method = "close"
+
+[node name="AndDoor" parent="." instance=ExtResource("8_0pbjp")]
+position = Vector2(-249, -576)
+
+[node name="CombinedTriggerable" parent="AndDoor" node_paths=PackedStringArray("triggers") instance=ExtResource("10_q6wx6")]
+triggers = [NodePath("../../PressurePlate1/AreaTrigger"), NodePath("../../PressurePlate2/AreaTrigger")]
+activating_method = "open"
+deactivating_method = "close"
+
+[node name="OrDoor" parent="." instance=ExtResource("8_0pbjp")]
+position = Vector2(-32, -576)
+
+[node name="CombinedTriggerable" parent="OrDoor" node_paths=PackedStringArray("triggers") instance=ExtResource("10_q6wx6")]
+triggers = [NodePath("../../PressurePlate1/AreaTrigger"), NodePath("../../PressurePlate2/AreaTrigger")]
+activating_method = "open"
+deactivating_method = "close"
+condition = 1
+
+[node name="XorDoor" parent="." instance=ExtResource("8_0pbjp")]
+position = Vector2(182, -576)
+
+[node name="CombinedTriggerable" parent="XorDoor" node_paths=PackedStringArray("triggers") instance=ExtResource("10_q6wx6")]
+triggers = [NodePath("../../PressurePlate1/AreaTrigger"), NodePath("../../PressurePlate2/AreaTrigger")]
+activating_method = "open"
+deactivating_method = "close"
+condition = 2
