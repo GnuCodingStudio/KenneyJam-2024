@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/image="res://assets/image/promo/background.png"
 config/icon="res://assets/image/icon.png"
 
+[autoload]
+
+Colors="*res://services/Colors.gd"
+
 [debug]
 
 shapes/collision/shape_color=Color(1, 1, 1, 0.42)
@@ -102,6 +106,7 @@ locale/translations=PackedStringArray("res://resources/localization/MenuTranslat
 2d_physics/layer_4="Player1Gate"
 2d_physics/layer_5="Player2Gate"
 2d_physics/layer_6="Window"
+2d_physics/layer_7="Door"
 
 [rendering]
 

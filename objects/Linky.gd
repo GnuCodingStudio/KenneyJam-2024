@@ -31,11 +31,11 @@ func _process(delta):
 
 func _on_broke(breaking_position: Vector2) -> void:
 	beam.visible = false
-	
+
 	hit_particules.global_position = breaking_position
 	hit_particules.emitting = true
 	await hit_particules.finished
-	
+
 	link_broken.emit()
 
 
@@ -44,7 +44,7 @@ func _get_broken_position():
 	var query = PhysicsRayQueryParameters2D.create(playerOne.global_position, playerTwo.global_position)
 	query.collision_mask = 0b100
 	var result = spaceState.intersect_ray(query)
-	
+
 	if result != null and result.has("collider"):
 		return result["position"]
 	else:
