@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqvwvtn6ealaj"]
+
+[ext_resource type="Script" path="res://scenes/levels/BasicLevel.gd" id="1_su5ei"]
+
+[node name="LevelDoor01" type="Node2D" node_paths=PackedStringArray("end_position")]
+script = ExtResource("1_su5ei")
+end_position = NodePath("EndPosition")
+
+[node name="EndPosition" type="Node2D" parent="."]
+position = Vector2(0, -2048)
+
+[node name="Floor" type="TileMapLayer" parent="."]
+
+[node name="Walls" type="TileMapLayer" parent="."]
