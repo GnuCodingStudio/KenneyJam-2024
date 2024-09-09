@@ -27,21 +27,21 @@ tile_set = ExtResource("2_fgdda")
 position = Vector2(-281, -950)
 for_player = 0
 
-[node name="Trigger" type="Node" parent="PressurePlatePlayerOneCross"]
+[node name="AreaTrigger" type="Node" parent="PressurePlatePlayerOneCross"]
 script = ExtResource("4_mudyx")
 
 [node name="PressurePlatePlayerTwoCross" parent="." instance=ExtResource("3_a0ow3")]
 position = Vector2(236, -246)
 for_player = 1
 
-[node name="Trigger" type="Node" parent="PressurePlatePlayerTwoCross"]
+[node name="AreaTrigger" type="Node" parent="PressurePlatePlayerTwoCross"]
 script = ExtResource("4_mudyx")
 
 [node name="PressurePlatePlayerOneSelf" parent="." instance=ExtResource("3_a0ow3")]
 position = Vector2(-267, -1347)
 for_player = 0
 
-[node name="OnlyOnTrigger" type="Node" parent="PressurePlatePlayerOneSelf"]
+[node name="AreaTrigger" type="Node" parent="PressurePlatePlayerOneSelf"]
 script = ExtResource("4_mudyx")
 trigger_deactivation = false
 
@@ -49,7 +49,7 @@ trigger_deactivation = false
 position = Vector2(253, -1346)
 for_player = 1
 
-[node name="OnlyOnTrigger" type="Node" parent="PressurePlatePlayerTwoSelf"]
+[node name="AreaTrigger" type="Node" parent="PressurePlatePlayerTwoSelf"]
 script = ExtResource("4_mudyx")
 trigger_deactivation = false
 
@@ -59,7 +59,7 @@ rotation = 3.14159
 collision_layer = 64
 
 [node name="SimpleTriggerable" parent="DoorPlayerOne" node_paths=PackedStringArray("trigger") instance=ExtResource("6_qynne")]
-trigger = NodePath("../../PressurePlatePlayerTwoCross/Trigger")
+trigger = NodePath("../../PressurePlatePlayerTwoCross/AreaTrigger")
 activating_method = "open"
 deactivating_method = "close"
 
@@ -68,7 +68,7 @@ position = Vector2(320, -960)
 rotation = -3.14159
 
 [node name="SimpleTriggerable" parent="DoorPlayerTwo" node_paths=PackedStringArray("trigger") instance=ExtResource("6_qynne")]
-trigger = NodePath("../../PressurePlatePlayerOneCross/Trigger")
+trigger = NodePath("../../PressurePlatePlayerOneCross/AreaTrigger")
 activating_method = "open"
 deactivating_method = "close"
 
@@ -76,7 +76,7 @@ deactivating_method = "close"
 position = Vector2(-320, -1600)
 
 [node name="SimpleTriggerable" parent="CommonDoorPlayerOne" node_paths=PackedStringArray("trigger") instance=ExtResource("6_qynne")]
-trigger = NodePath("../../PressurePlatePlayerOneSelf/OnlyOnTrigger")
+trigger = NodePath("../../PressurePlatePlayerOneSelf/AreaTrigger")
 activating_method = "open"
 deactivating_method = "close"
 
@@ -85,6 +85,6 @@ position = Vector2(320, -1600)
 
 [node name="SimpleTriggerable" type="Node" parent="CommonDoorPlayerTwo" node_paths=PackedStringArray("trigger")]
 script = ExtResource("7_u5733")
-trigger = NodePath("../../PressurePlatePlayerTwoSelf/OnlyOnTrigger")
+trigger = NodePath("../../PressurePlatePlayerTwoSelf/AreaTrigger")
 activating_method = "open"
 deactivating_method = "close"
