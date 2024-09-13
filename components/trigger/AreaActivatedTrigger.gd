@@ -1,5 +1,5 @@
 class_name AreaTrigger
-extends Node
+extends Node2D
 
 
 signal on_activated()

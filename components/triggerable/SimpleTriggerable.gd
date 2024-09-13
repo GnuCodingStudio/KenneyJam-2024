@@ -1,9 +1,12 @@
+@tool
 class_name SimpleTriggerable
-extends Node
+extends Node2D
 
-@export var trigger: Node
+
+@export var trigger: Node2D
 @export var activating_method: String
 @export var deactivating_method: String
+
 
 func _ready() -> void:
 	var parent = get_parent()
@@ -22,3 +25,9 @@ func _open_parent() -> void:
 
 func _close_parent() -> void:
 	get_parent().call_deferred(deactivating_method)
+
+
+func _draw() -> void:
+	if Engine.is_editor_hint():
+		var to_trigger = trigger.global_position - self.global_position
+		draw_dashed_line(Vector2(0.0, 0.0), to_trigger, Color.GREEN, 5.0, 20.0)

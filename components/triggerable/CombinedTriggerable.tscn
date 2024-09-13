@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://components/triggerable/CombinedTriggerable.gd" id="1_atnrd"]
 
-[node name="CombinedTriggerable" type="Node"]
+[node name="CombinedTriggerable" type="Node2D"]
 script = ExtResource("1_atnrd")

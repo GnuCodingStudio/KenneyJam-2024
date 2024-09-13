@@ -127,13 +127,11 @@ playerTwo = NodePath("../PlayerTwo")
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(873, 859)
-collision_mask = 54
 
 [node name="PlayerTwo" parent="." instance=ExtResource("3_isf1q")]
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(1174, 861.821)
-collision_mask = 45
 
 [node name="BlackCircle" parent="." instance=ExtResource("7_dbkpd")]
 unique_name_in_owner = true

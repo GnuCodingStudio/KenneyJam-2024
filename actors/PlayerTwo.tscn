@@ -10,7 +10,7 @@ region = Rect2(768, 1024, 128, 128)
 
 [node name="PlayerTwo" instance=ExtResource("1_y2sbi")]
 collision_layer = 2
-collision_mask = 69
+collision_mask = 109
 script = ExtResource("2_eljl6")
 
 [node name="Body" parent="." index="1"]
