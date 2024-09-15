@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bw4vur2v61f4j"]
 
 [ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="1_doi4n"]
-[ext_resource type="Script" path="res://objects/Door.gd" id="2_0hdpt"]
+[ext_resource type="Script" path="res://objects/Door/Door.gd" id="2_0hdpt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ormt4"]
 atlas = ExtResource("1_doi4n")

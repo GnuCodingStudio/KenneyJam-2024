@@ -47,6 +47,16 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_trigger_change() -> void:
 	if is_triggering:
-		if trigger_activation: on_activated.emit()
+		if trigger_activation:
+			on_activated.emit()
+		
+			var parent = get_parent()
+			if parent.has_method("on_activated"):
+				parent.on_activated()
 	else:
-		if trigger_deactivation: on_deactivated.emit()
+		if trigger_deactivation:
+			on_deactivated.emit()
+			
+			var parent = get_parent()
+			if parent.has_method("on_deactivated"):
+				parent.on_deactivated()

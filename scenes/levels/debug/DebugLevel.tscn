@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://mechanism/Camera.gd" id="3_8keov"]
 [ext_resource type="PackedScene" uid="uid://cnqdqkqxnuaj5" path="res://actors/PlayerOne.tscn" id="4_iepg1"]
 [ext_resource type="PackedScene" uid="uid://dkxhav8456jex" path="res://actors/PlayerTwo.tscn" id="5_ayfgi"]
-[ext_resource type="PackedScene" uid="uid://cvuuymugpkjwv" path="res://objects/PressurePlate.tscn" id="6_7vkvf"]
+[ext_resource type="PackedScene" uid="uid://cvuuymugpkjwv" path="res://objects/PressurePlate/PressurePlate.tscn" id="6_7vkvf"]
 [ext_resource type="PackedScene" uid="uid://dx5tegt875rd0" path="res://components/trigger/AreaActivatedTrigger.tscn" id="7_hguiw"]
-[ext_resource type="PackedScene" uid="uid://bw4vur2v61f4j" path="res://objects/Door.tscn" id="8_0pbjp"]
+[ext_resource type="PackedScene" uid="uid://bw4vur2v61f4j" path="res://objects/Door/Door.tscn" id="8_0pbjp"]
 [ext_resource type="PackedScene" uid="uid://d2wb5dbwmb7k6" path="res://components/triggerable/SimpleTriggerable.tscn" id="9_gnr1e"]
 [ext_resource type="PackedScene" uid="uid://cuj170821rlq3" path="res://components/triggerable/CombinedTriggerable.tscn" id="10_q6wx6"]
 
@@ -47,13 +47,13 @@ z_index = 1
 position = Vector2(116, -54.179)
 
 [node name="PressurePlate1" parent="." instance=ExtResource("6_7vkvf")]
-position = Vector2(-221, -331)
+position = Vector2(-325, -331)
 for_player = 0
 
 [node name="AreaTrigger" parent="PressurePlate1" instance=ExtResource("7_hguiw")]
 
 [node name="PressurePlate2" parent="." instance=ExtResource("6_7vkvf")]
-position = Vector2(26, -330)
+position = Vector2(-102, -330)
 
 [node name="AreaTrigger" parent="PressurePlate2" instance=ExtResource("7_hguiw")]
 
@@ -66,7 +66,7 @@ activating_method = "open"
 deactivating_method = "close"
 
 [node name="AndDoor" parent="." instance=ExtResource("8_0pbjp")]
-position = Vector2(-249, -576)
+position = Vector2(-300, -576)
 
 [node name="CombinedTriggerable" parent="AndDoor" node_paths=PackedStringArray("triggers") instance=ExtResource("10_q6wx6")]
 triggers = [NodePath("../../PressurePlate1/AreaTrigger"), NodePath("../../PressurePlate2/AreaTrigger")]
@@ -74,7 +74,7 @@ activating_method = "open"
 deactivating_method = "close"
 
 [node name="OrDoor" parent="." instance=ExtResource("8_0pbjp")]
-position = Vector2(-32, -576)
+position = Vector2(-160, -576)
 
 [node name="CombinedTriggerable" parent="OrDoor" node_paths=PackedStringArray("triggers") instance=ExtResource("10_q6wx6")]
 triggers = [NodePath("../../PressurePlate1/AreaTrigger"), NodePath("../../PressurePlate2/AreaTrigger")]
@@ -83,7 +83,7 @@ deactivating_method = "close"
 condition = 1
 
 [node name="XorDoor" parent="." instance=ExtResource("8_0pbjp")]
-position = Vector2(182, -576)
+position = Vector2(-24, -576)
 
 [node name="CombinedTriggerable" parent="XorDoor" node_paths=PackedStringArray("triggers") instance=ExtResource("10_q6wx6")]
 triggers = [NodePath("../../PressurePlate1/AreaTrigger"), NodePath("../../PressurePlate2/AreaTrigger")]

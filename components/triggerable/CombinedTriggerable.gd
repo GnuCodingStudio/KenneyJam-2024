@@ -25,6 +25,11 @@ func _ready() -> void:
 		trigger.on_deactivated.connect(_on_trigger_changed)
 
 
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		queue_redraw()
+
+
 func _on_trigger_changed() -> void:
 	var new_ativation := false
 	
@@ -48,5 +53,5 @@ func _is_triggering(trigger) -> bool:
 func _draw() -> void:
 	if Engine.is_editor_hint():
 		for trigger in triggers:
-			var to_trigger = trigger.global_position - self.global_position
+			var to_trigger = (trigger.global_position - self.global_position) * get_parent().scale
 			draw_dashed_line(Vector2(0.0, 0.0), to_trigger, Color.GREEN, 5.0, 20.0)

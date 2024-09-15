@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/levels/BasicLevel.gd" id="1_orrvg"]
 [ext_resource type="TileSet" uid="uid://bnu3gr0iqb12l" path="res://scenes/levels/TileSet.tres" id="2_fgdda"]
-[ext_resource type="PackedScene" uid="uid://cvuuymugpkjwv" path="res://objects/PressurePlate.tscn" id="3_a0ow3"]
+[ext_resource type="PackedScene" uid="uid://cvuuymugpkjwv" path="res://objects/PressurePlate/PressurePlate.tscn" id="3_a0ow3"]
 [ext_resource type="Script" path="res://components/trigger/AreaActivatedTrigger.gd" id="4_mudyx"]
-[ext_resource type="PackedScene" uid="uid://bw4vur2v61f4j" path="res://objects/Door.tscn" id="5_o2e0t"]
+[ext_resource type="PackedScene" uid="uid://bw4vur2v61f4j" path="res://objects/Door/Door.tscn" id="5_o2e0t"]
 [ext_resource type="PackedScene" uid="uid://d2wb5dbwmb7k6" path="res://components/triggerable/SimpleTriggerable.tscn" id="6_qynne"]
 [ext_resource type="Script" path="res://components/triggerable/SimpleTriggerable.gd" id="7_u5733"]
 

@@ -19,6 +19,11 @@ func _ready() -> void:
 	trigger.on_deactivated.connect(_close_parent)
 
 
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		queue_redraw()
+
+
 func _open_parent() -> void:
 	get_parent().call_deferred(activating_method)
 
@@ -29,5 +34,5 @@ func _close_parent() -> void:
 
 func _draw() -> void:
 	if Engine.is_editor_hint():
-		var to_trigger = trigger.global_position - self.global_position
+		var to_trigger = (trigger.global_position - self.global_position) * get_parent().scale
 		draw_dashed_line(Vector2(0.0, 0.0), to_trigger, Color.GREEN, 5.0, 20.0)
