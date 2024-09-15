@@ -1,4 +1,6 @@
-extends Node
+@tool
+class_name CombinedTriggerable
+extends Node2D
 
 
 @export var triggers: Array[Node]
@@ -23,6 +25,11 @@ func _ready() -> void:
 		trigger.on_deactivated.connect(_on_trigger_changed)
 
 
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		queue_redraw()
+
+
 func _on_trigger_changed() -> void:
 	var new_ativation := false
 	
@@ -41,3 +48,10 @@ func _on_trigger_changed() -> void:
 
 func _is_triggering(trigger) -> bool:
 	return trigger.is_triggering
+
+
+func _draw() -> void:
+	if Engine.is_editor_hint():
+		for trigger in triggers:
+			var to_trigger = (trigger.global_position - self.global_position) * get_parent().scale
+			draw_dashed_line(Vector2(0.0, 0.0), to_trigger, Color.GREEN, 5.0, 20.0)

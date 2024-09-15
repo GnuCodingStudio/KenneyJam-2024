@@ -1,5 +1,5 @@
 class_name AreaTrigger
-extends Node
+extends Node2D
 
 
 signal on_activated()
@@ -18,8 +18,8 @@ var is_triggering := false:
 			_on_trigger_change()
 		else:
 			is_triggering = value
-		
-		
+
+
 var _players_detected: Array[Player] = []
 
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 	var parent = get_parent()
 	assert(parent is Area2D, "Parent of AreaTrigger must be an Area2D")
 	var area = parent as Area2D
-	
+
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
 
@@ -47,6 +47,16 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_trigger_change() -> void:
 	if is_triggering:
-		if trigger_activation: on_activated.emit()
-	else: 
-		if trigger_deactivation: on_deactivated.emit()
+		if trigger_activation:
+			on_activated.emit()
+		
+			var parent = get_parent()
+			if parent.has_method("on_activated"):
+				parent.on_activated()
+	else:
+		if trigger_deactivation:
+			on_deactivated.emit()
+			
+			var parent = get_parent()
+			if parent.has_method("on_deactivated"):
+				parent.on_deactivated()

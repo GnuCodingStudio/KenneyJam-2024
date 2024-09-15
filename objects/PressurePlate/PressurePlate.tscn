@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvuuymugpkjwv"]
+
+[ext_resource type="Script" path="res://objects/PressurePlate/PressurePlate.gd" id="1_7pbpd"]
+[ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="1_gyey5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u4jun"]
+radius = 64.0
+
+[sub_resource type="Shader" id="Shader_e6qto"]
+code = "shader_type canvas_item;
+
+uniform float pression : hint_range(0.0, 1.0);
+uniform float elevation: hint_range(0.0, 1.0) = 0.002;
+uniform vec4 modulate: source_color = vec4(1.0);
+
+void fragment() {
+	float displacement = elevation * (1.0 - pression);
+	vec2 displaced = vec2(UV.x + displacement, UV.y + displacement);
+	vec4 original = texture(TEXTURE, UV);
+
+	vec4 shadow = vec4(0.0, 0.0, 0.0, original.a);
+	vec4 displaced_color = texture(TEXTURE, displaced);
+
+	if (displaced_color.a < 1.0) {
+		COLOR = shadow;
+	} else {
+		COLOR = displaced_color * modulate;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgkad"]
+resource_local_to_scene = true
+shader = SubResource("Shader_e6qto")
+shader_parameter/pression = 0.0
+shader_parameter/elevation = 0.002
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgwfu"]
+atlas = ExtResource("1_gyey5")
+region = Rect2(1408, 896, 128, 128)
+
+[node name="PressurePlate" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_7pbpd")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u4jun")
+metadata/_edit_lock_ = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_pgkad")
+texture = SubResource("AtlasTexture_qgwfu")
+metadata/_edit_lock_ = true

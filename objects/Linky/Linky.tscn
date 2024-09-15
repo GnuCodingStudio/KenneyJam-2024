@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://diounpccdrvmh"]
 
-[ext_resource type="Script" path="res://objects/Linky.gd" id="1_xhwyf"]
+[ext_resource type="Script" path="res://objects/Linky/Linky.gd" id="1_xhwyf"]
 [ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="2_5lulw"]
 
 [sub_resource type="Shader" id="Shader_gv04h"]

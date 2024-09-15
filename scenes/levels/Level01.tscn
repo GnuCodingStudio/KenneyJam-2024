@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dkxhav8456jex" path="res://actors/PlayerTwo.tscn" id="3_isf1q"]
 [ext_resource type="PackedScene" uid="uid://dgswviy1f8rgo" path="res://scenes/levels/BlackCircle.tscn" id="7_dbkpd"]
 [ext_resource type="PackedScene" uid="uid://b246bf3ydqiia" path="res://scenes/levels/YouFailed.tscn" id="8_axi6d"]
-[ext_resource type="PackedScene" uid="uid://dsdq08fndt7ow" path="res://objects/KeyboardHint.tscn" id="9_880yl"]
+[ext_resource type="PackedScene" uid="uid://dsdq08fndt7ow" path="res://objects/KeyboardHint/KeyboardHint.tscn" id="9_880yl"]
 [ext_resource type="Texture2D" uid="uid://b56sqk5a1y6mn" path="res://assets/image/keyboard/keyboard_z.png" id="10_s016p"]
 [ext_resource type="Texture2D" uid="uid://dwgqayh0p674w" path="res://assets/image/keyboard/keyboard_arrow_up.png" id="10_savgc"]
 [ext_resource type="Texture2D" uid="uid://bmq5feydv3v4k" path="res://assets/image/keyboard/keyboard_arrow_down.png" id="11_3nb7h"]
@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://do21pybjwyq8q" path="res://assets/image/keyboard/keyboard_arrow_left.png" id="12_wxrot"]
 [ext_resource type="Texture2D" uid="uid://bcmqe03bg36o5" path="res://assets/image/keyboard/keyboard_d.png" id="13_1dhq1"]
 [ext_resource type="Texture2D" uid="uid://0slf2wvbyrq0" path="res://assets/image/keyboard/keyboard_arrow_right.png" id="13_fgbj7"]
-[ext_resource type="PackedScene" uid="uid://diounpccdrvmh" path="res://objects/Linky.tscn" id="15_xxdb8"]
+[ext_resource type="PackedScene" uid="uid://diounpccdrvmh" path="res://objects/Linky/Linky.tscn" id="15_xxdb8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7jkv"]
 atlas = ExtResource("3_0syjs")
@@ -127,13 +127,11 @@ playerTwo = NodePath("../PlayerTwo")
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(873, 859)
-collision_mask = 54
 
 [node name="PlayerTwo" parent="." instance=ExtResource("3_isf1q")]
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(1174, 861.821)
-collision_mask = 45
 
 [node name="BlackCircle" parent="." instance=ExtResource("7_dbkpd")]
 unique_name_in_owner = true

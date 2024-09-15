@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsdq08fndt7ow"]
 
-[ext_resource type="Script" path="res://objects/KeyboardHint.gd" id="1_3lq75"]
+[ext_resource type="Script" path="res://objects/KeyboardHint/KeyboardHint.gd" id="1_3lq75"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu5uo"]
 bg_color = Color(0.133196, 0.133196, 0.133196, 1)
