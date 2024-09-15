@@ -58,6 +58,7 @@ position = Vector2(-102, -330)
 [node name="AreaTrigger" parent="PressurePlate2" instance=ExtResource("7_hguiw")]
 
 [node name="SimpleDoor" parent="." instance=ExtResource("8_0pbjp")]
+self_modulate = Color(0.827451, 0.952941, 1, 1)
 position = Vector2(-437, -576)
 
 [node name="SimpleTriggerable" parent="SimpleDoor" node_paths=PackedStringArray("trigger") instance=ExtResource("9_gnr1e")]
@@ -66,6 +67,7 @@ activating_method = "open"
 deactivating_method = "close"
 
 [node name="AndDoor" parent="." instance=ExtResource("8_0pbjp")]
+self_modulate = Color(0.827451, 0.952941, 1, 1)
 position = Vector2(-300, -576)
 
 [node name="CombinedTriggerable" parent="AndDoor" node_paths=PackedStringArray("triggers") instance=ExtResource("10_q6wx6")]
@@ -74,6 +76,7 @@ activating_method = "open"
 deactivating_method = "close"
 
 [node name="OrDoor" parent="." instance=ExtResource("8_0pbjp")]
+self_modulate = Color(0.827451, 0.952941, 1, 1)
 position = Vector2(-160, -576)
 
 [node name="CombinedTriggerable" parent="OrDoor" node_paths=PackedStringArray("triggers") instance=ExtResource("10_q6wx6")]
@@ -83,6 +86,7 @@ deactivating_method = "close"
 condition = 1
 
 [node name="XorDoor" parent="." instance=ExtResource("8_0pbjp")]
+self_modulate = Color(0.827451, 0.952941, 1, 1)
 position = Vector2(-24, -576)
 
 [node name="CombinedTriggerable" parent="XorDoor" node_paths=PackedStringArray("triggers") instance=ExtResource("10_q6wx6")]

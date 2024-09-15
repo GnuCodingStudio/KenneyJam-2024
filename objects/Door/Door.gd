@@ -7,11 +7,6 @@ extends StaticBody2D
 @onready var collision: CollisionShape2D = %Collision
 
 
-func _ready() -> void:
-	if self_modulate == Color.WHITE:
-		self_modulate = Colors.glass()
-
-
 func open() -> void:
 	collision.disabled = true
 	sprite.play("opened")
