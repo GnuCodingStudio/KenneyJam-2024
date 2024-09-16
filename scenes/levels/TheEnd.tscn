@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=4 uid="uid://b23sbcvtsuv48"]
+
+[ext_resource type="Script" path="res://scenes/levels/BasicLevel.gd" id="1_12j1n"]
+[ext_resource type="TileSet" uid="uid://bnu3gr0iqb12l" path="res://scenes/levels/TileSet.tres" id="2_wplq1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uoukh"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.666667, 0.517647, 0.462745, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 4
+
+[node name="TheEnd" type="Node2D" node_paths=PackedStringArray("end_position")]
+script = ExtResource("1_12j1n")
+end_position = NodePath("EndPosition")
+
+[node name="EndPosition" type="Node2D" parent="."]
+position = Vector2(0, -1664)
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD9////AAAAAAYAAQD+////AAAAAAYAAQD/////AAAAAAYAAQAAAP//AAAAAAYAAQABAP//AAAAAAYAAQACAP//AAAAAAYAAQD3//P/AAAAAAYAAQD3//T/AAAAAAYAAQD3//X/AAAAAAYAAQD3//b/AAAAAAYAAQD3//f/AAAAAAYAAQD3//j/AAAAAAYAAQD3//n/AAAAAAYAAQD3//r/AAAAAAYAAQD3//v/AAAAAAYAAQD3//z/AAAAAAYAAQD3//3/AAAAAAYAAQD3//7/AAAAAAYAAQD3////AAAAAAYAAQD4//P/AAAAAAYAAQD4//T/AAAAAAYAAQD4//X/AAAAAAYAAQD4//b/AAAAAAYAAQD4//f/AAAAAAYAAQD4//j/AAAAAAYAAQD4//n/AAAAAAYAAQD4//r/AAAAAAYAAQD4//v/AAAAAAYAAQD4//z/AAAAAAYAAQD4//3/AAAAAAYAAQD4//7/AAAAAAYAAQD4////AAAAAAYAAQD5//P/AAAAAAYAAQD5//T/AAAAAAYAAQD5//X/AAAAAAYAAQD5//b/AAAAAAYAAQD5//f/AAAAAAYAAQD5//j/AAAAAAYAAQD5//n/AAAAAAYAAQD5//r/AAAAAAYAAQD5//v/AAAAAAYAAQD5//z/AAAAAAYAAQD5//3/AAAAAAYAAQD5//7/AAAAAAYAAQD5////AAAAAAYAAQD6//P/AAAAAAYAAQD6//T/AAAAAAYAAQD6//X/AAAAAAYAAQD6//b/AAAAAAYAAQD6//f/AAAAAAYAAQD6//j/AAAAAAYAAQD6//n/AAAAAAYAAQD6//r/AAAAAAYAAQD6//v/AAAAAAYAAQD6//z/AAAAAAYAAQD6//3/AAAAAAYAAQD6//7/AAAAAAYAAQD6////AAAAAAYAAQD7//P/AAAAAAYAAQD7//T/AAAAAAYAAQD7//X/AAAAAAYAAQD7//b/AAAAAAYAAQD7//f/AAAAAAYAAQD7//j/AAAAAAYAAQD7//n/AAAAAAYAAQD7//r/AAAAAAYAAQD7//v/AAAAAAYAAQD7//z/AAAAAAYAAQD7//3/AAAAAAYAAQD7//7/AAAAAAYAAQD7////AAAAAAYAAQD8//P/AAAAAAYAAQD8//T/AAAAAAYAAQD8//X/AAAAAAYAAQD8//b/AAAAAAYAAQD8//f/AAAAAAYAAQD8//j/AAAAAAYAAQD8//n/AAAAAAYAAQD8//r/AAAAAAYAAQD8//v/AAAAAAYAAQD8//z/AAAAAAYAAQD8//3/AAAAAAYAAQD8//7/AAAAAAYAAQD8////AAAAAAYAAQD9//P/AAAAAAYAAQD9//T/AAAAAAYAAQD9//X/AAAAAAYAAQD9//b/AAAAAAYAAQD9//f/AAAAAAYAAQD9//j/AAAAAAYAAQD9//n/AAAAAAYAAQD9//r/AAAAAAYAAQD9//v/AAAAAAYAAQD9//z/AAAAAAYAAQD9//3/AAAAAAYAAQD9//7/AAAAAAYAAQD+//P/AAAAAAYAAQD+//T/AAAAAAYAAQD+//X/AAAAAAYAAQD+//b/AAAAAAYAAQD+//f/AAAAAAYAAQD+//j/AAAAAAYAAQD+//n/AAAAAAYAAQD+//r/AAAAAAYAAQD+//v/AAAAAAYAAQD+//z/AAAAAAYAAQD+//3/AAAAAAYAAQD+//7/AAAAAAYAAQD///P/AAAAAAYAAQD///T/AAAAAAYAAQD///X/AAAAAAYAAQD///b/AAAAAAYAAQD///f/AAAAAAYAAQD///j/AAAAAAYAAQD///n/AAAAAAYAAQD///r/AAAAAAYAAQD///v/AAAAAAYAAQD///z/AAAAAAYAAQD///3/AAAAAAYAAQD///7/AAAAAAYAAQAAAPP/AAAAAAYAAQAAAPT/AAAAAAYAAQAAAPX/AAAAAAYAAQAAAPb/AAAAAAYAAQAAAPf/AAAAAAYAAQAAAPj/AAAAAAYAAQAAAPn/AAAAAAYAAQAAAPr/AAAAAAYAAQAAAPv/AAAAAAYAAQAAAPz/AAAAAAYAAQAAAP3/AAAAAAYAAQAAAP7/AAAAAAYAAQABAPP/AAAAAAYAAQABAPT/AAAAAAYAAQABAPX/AAAAAAYAAQABAPb/AAAAAAYAAQABAPf/AAAAAAYAAQABAPj/AAAAAAYAAQABAPn/AAAAAAYAAQABAPr/AAAAAAYAAQABAPv/AAAAAAYAAQABAPz/AAAAAAYAAQABAP3/AAAAAAYAAQABAP7/AAAAAAYAAQACAPP/AAAAAAYAAQACAPT/AAAAAAYAAQACAPX/AAAAAAYAAQACAPb/AAAAAAYAAQACAPf/AAAAAAYAAQACAPj/AAAAAAYAAQACAPn/AAAAAAYAAQACAPr/AAAAAAYAAQACAPv/AAAAAAYAAQACAPz/AAAAAAYAAQACAP3/AAAAAAYAAQACAP7/AAAAAAYAAQADAPP/AAAAAAYAAQADAPT/AAAAAAYAAQADAPX/AAAAAAYAAQADAPb/AAAAAAYAAQADAPf/AAAAAAYAAQADAPj/AAAAAAYAAQADAPn/AAAAAAYAAQADAPr/AAAAAAYAAQADAPv/AAAAAAYAAQADAPz/AAAAAAYAAQADAP3/AAAAAAYAAQADAP7/AAAAAAYAAQADAP//AAAAAAYAAQAEAPP/AAAAAAYAAQAEAPT/AAAAAAYAAQAEAPX/AAAAAAYAAQAEAPb/AAAAAAYAAQAEAPf/AAAAAAYAAQAEAPj/AAAAAAYAAQAEAPn/AAAAAAYAAQAEAPr/AAAAAAYAAQAEAPv/AAAAAAYAAQAEAPz/AAAAAAYAAQAEAP3/AAAAAAYAAQAEAP7/AAAAAAYAAQAEAP//AAAAAAYAAQAFAPP/AAAAAAYAAQAFAPT/AAAAAAYAAQAFAPX/AAAAAAYAAQAFAPb/AAAAAAYAAQAFAPf/AAAAAAYAAQAFAPj/AAAAAAYAAQAFAPn/AAAAAAYAAQAFAPr/AAAAAAYAAQAFAPv/AAAAAAYAAQAFAPz/AAAAAAYAAQAFAP3/AAAAAAYAAQAFAP7/AAAAAAYAAQAFAP//AAAAAAYAAQAGAPP/AAAAAAYAAQAGAPT/AAAAAAYAAQAGAPX/AAAAAAYAAQAGAPb/AAAAAAYAAQAGAPf/AAAAAAYAAQAGAPj/AAAAAAYAAQAGAPn/AAAAAAYAAQAGAPr/AAAAAAYAAQAGAPv/AAAAAAYAAQAGAPz/AAAAAAYAAQAGAP3/AAAAAAYAAQAGAP7/AAAAAAYAAQAGAP//AAAAAAYAAQAHAPP/AAAAAAYAAQAHAPT/AAAAAAYAAQAHAPX/AAAAAAYAAQAHAPb/AAAAAAYAAQAHAPf/AAAAAAYAAQAHAPj/AAAAAAYAAQAHAPn/AAAAAAYAAQAHAPr/AAAAAAYAAQAHAPv/AAAAAAYAAQAHAPz/AAAAAAYAAQAHAP3/AAAAAAYAAQAHAP7/AAAAAAYAAQAHAP//AAAAAAYAAQAIAPP/AAAAAAYAAQAIAPT/AAAAAAYAAQAIAPX/AAAAAAYAAQAIAPb/AAAAAAYAAQAIAPf/AAAAAAYAAQAIAPj/AAAAAAYAAQAIAPn/AAAAAAYAAQAIAPr/AAAAAAYAAQAIAPv/AAAAAAYAAQAIAPz/AAAAAAYAAQAIAP3/AAAAAAYAAQAIAP7/AAAAAAYAAQAIAP//AAAAAAYAAQA=")
+tile_set = ExtResource("2_wplq1")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAP//AAAKAAAAASAEAP//AAAKAAAAASAFAP//AAAKAAAAASAGAP//AAAKAAAAASAHAP//AAAKAAAAASD8////AAAKAAAAASD7////AAAKAAAAASD6////AAAKAAAAASD5////AAAKAAAAASD4////AAAKAAAAASD3////AAAJAAAAAWAIAP//AAAJAAAAATD3//P/AAAJAAAAAQAIAPP/AAAJAAAAARD8//P/AAAKAAAAAQD7//P/AAAKAAAAAQD6//P/AAAKAAAAAQD5//P/AAAKAAAAAQD4//P/AAAKAAAAAQADAPP/AAAKAAAAAQAEAPP/AAAKAAAAAQAFAPP/AAAKAAAAAQAGAPP/AAAKAAAAAQAHAPP/AAAKAAAAAQAIAPT/AAAKAAAAAVAIAPX/AAAKAAAAAVAIAPb/AAAKAAAAAVAIAPf/AAAKAAAAAVAIAPj/AAAKAAAAAVAIAPn/AAAKAAAAAVAIAPr/AAAKAAAAAVAIAPv/AAAKAAAAAVAIAPz/AAAKAAAAAVAIAP3/AAAKAAAAAVAIAP7/AAAKAAAAAVD3//7/AAAKAAAAAWD3//3/AAAKAAAAAWD3//z/AAAKAAAAAWD3//v/AAAKAAAAAWD3//r/AAAKAAAAAWD3//T/AAAKAAAAAWD3//X/AAAKAAAAAWD3//b/AAAKAAAAAWD3//f/AAAKAAAAAWD3//j/AAAKAAAAAWD3//n/AAAKAAAAAWA=")
+tile_set = ExtResource("2_wplq1")
+
+[node name="LeftPanel" type="Panel" parent="."]
+offset_left = -1024.0
+offset_top = -1024.0
+offset_right = -384.0
+offset_bottom = -128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uoukh")
+
+[node name="Margin" type="MarginContainer" parent="LeftPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="LeftPanel/Margin"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Merci d'avoir joué à Linky !
+
+Linky a été conçu et développé par un développeur indépendant sur son temps libre, merci beaucoup d'être allé au bout de son oeuvre.
+
+Vous pouvez continuer à courir dans les couloirs ci-dessus, ils vont jusqu'à l'infini. En continuant vous pourriez penser que les salles suivantes sont peut-être celles par lesquelles vous êtes déjà passés, c'est le cas.
+
+Bonne continuation !"
+autowrap_mode = 2
+
+[node name="RightPanel" type="Panel" parent="."]
+offset_left = 384.0
+offset_top = -1024.0
+offset_right = 1024.0
+offset_bottom = -128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uoukh")
+
+[node name="Margin" type="MarginContainer" parent="RightPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="RightPanel/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RightPanel/Margin/VBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Ce jeu vous a plu ? GnuCodingStudio en a développé d'autres, vous pouvez les retrouver à différents endroits :"
+autowrap_mode = 2
+
+[node name="ItchiIOLinkButton" type="LinkButton" parent="RightPanel/Margin/VBox"]
+layout_mode = 2
+text = "Itchi.io"
+uri = "https://gnucodingstudio.itch.io/"
+
+[node name="GithubLinkButton" type="LinkButton" parent="RightPanel/Margin/VBox"]
+layout_mode = 2
+text = "Github.com"
+uri = "https://github.com/gnucodingstudio/?q=topic:game&type=all&language=&sort="
+
+[node name="HSeparator" type="HSeparator" parent="RightPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label2" type="Label" parent="RightPanel/Margin/VBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Linky est open-source, vous pouvez à votre tour créer des salles en récupérant et modifiant le code source."
+autowrap_mode = 2
+
+[node name="GithubProLinkButton" type="LinkButton" parent="RightPanel/Margin/VBox"]
+layout_mode = 2
+text = "Github.com/Linky"
+uri = "https://github.com/GnuCodingStudio/Linky-KenneyJam-2024"

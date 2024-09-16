@@ -21,14 +21,27 @@
 ## Feature
 
 - ✨ Two players - Shared screen
-- 🎁 Infinie run
-- 📝 And many others are coming soon !
+- 📝 Multiple rooms to resolve!
+- 🎁 Infinite run
 
 
 ## Roadmap
 
-- [ ] Add more rooms for more fun
-- [ ] New mechanism: Doors and keys
+- No more roadmap
+
+
+## Contribute
+
+If you want to create your own rooms, you can fork the project.
+Look at how other rooms are created: `/scenes/levels/door/...` for instance.
+Once created, you may add it to `InfiniteLoader` class.
+
+Basically, a room should:
+- extend `BasicLevel`
+- start at [0; 0] and face the top
+- have a Node2D defining the position to place the next level
+- have 6 blocks wide start and end
+- be finishable
 
 
 ## Tech & Tools
