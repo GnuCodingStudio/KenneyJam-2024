@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw4vur2v61f4j"]
+[gd_scene load_steps=9 format=3 uid="uid://bw4vur2v61f4j"]
 
 [ext_resource type="Texture2D" uid="uid://cfc1sn3s62cnp" path="res://assets/image/scribble_dungeons.png" id="1_doi4n"]
 [ext_resource type="Script" path="res://objects/Door/Door.gd" id="2_0hdpt"]
+[ext_resource type="AudioStream" uid="uid://cnn7t8a7p6xmp" path="res://objects/Door/open.mp3" id="3_p8m1g"]
+[ext_resource type="AudioStream" uid="uid://brr6qckbi0sbb" path="res://objects/Door/close.mp3" id="4_kniuj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ormt4"]
 atlas = ExtResource("1_doi4n")
@@ -49,3 +51,13 @@ unique_name_in_owner = true
 position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_v5m8t")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="OpenAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_p8m1g")
+bus = &"SFX"
+
+[node name="CloseAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_kniuj")
+bus = &"SFX"

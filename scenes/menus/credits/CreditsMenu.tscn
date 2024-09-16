@@ -65,6 +65,14 @@ author = "Gnu Coding Studio"
 link = "https://github.com/GnuCodingStudio/"
 link_text = "github.com / GnuCodingStudio"
 
+[node name="CreditsItem02" parent="GlobalMargin/VBox/Scroll/List" instance=ExtResource("1_gd18q")]
+layout_mode = 2
+size_flags_horizontal = 1
+title = "Door open and close"
+author = "Urkki69"
+link = "https://freesound.org/people/Urkki69/sounds/752832/"
+link_text = "freesound.org / Opening the front door - inside"
+
 [node name="BackButton" type="Button" parent="GlobalMargin"]
 layout_mode = 2
 size_flags_horizontal = 8
