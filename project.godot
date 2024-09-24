@@ -19,6 +19,7 @@ config/icon="res://assets/image/icon.png"
 [autoload]
 
 Colors="*res://services/Colors.gd"
+ProgressionService="*res://services/save/ProgressionService.gd"
 
 [debug]
 
