@@ -8,7 +8,7 @@ extends Control
 @onready var seed_input: SeedInput = %SeedInput
 
 
-func _ready():
+func _ready() -> void:
 	var noise = background.material.get_shader_parameter("Noise").noise
 	var over_noise = background.material.get_shader_parameter("OverNoise").noise
 	noise.seed = randi()
@@ -34,16 +34,16 @@ func _on_continue_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/levels/Level01.tscn")
 
 
-func _on_start_button_pressed():
+func _on_start_button_pressed() -> void:
 	seed(seed_input.seed)
-	var progression = Progression.new(seed_input.seed)
+	var progression = Progression.new(seed_input.seed, 0)
 	ProgressionService.save(progression)
 	get_tree().change_scene_to_file("res://scenes/levels/Level01.tscn")
 
 
-func _on_credits_button_pressed():
+func _on_credits_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/credits/CreditsMenu.tscn")
 
 
-func _on_quit_button_pressed():
+func _on_quit_button_pressed() -> void:
 	get_tree().quit()

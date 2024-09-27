@@ -36,17 +36,19 @@ func _load():
 		file.close()
 		return data
 	else:
-		return Progression.new(0)
+		return Progression.new(0, 0)
 
 
 func _serialize(progression: Progression) -> String:
 	return JSON.stringify({
-		"seed": progression.seed
+		"seed": progression.seed,
+		"levels_done": progression.levels_done
 	})
 
 
 func _parse(json: String) -> Progression:
 	var dict = JSON.parse_string(json)
 	return Progression.new(
-		dict["seed"]
+		dict["seed"],
+		dict["levels_done"]
 	)

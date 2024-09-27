@@ -1,6 +1,7 @@
 class_name InfiniteLoader
 extends Node2D
 
+
 @onready var player_one: Player = %PlayerOne
 @onready var player_two: Player = %PlayerTwo
 @onready var end_position: Node2D = %EndPosition
@@ -39,8 +40,6 @@ var _levels_done_count = 0
 
 
 func _ready() -> void:
-	_labyrinth_levels.shuffle()
-
 	_planned_levels.append_array(_beginners_level)
 	_planned_levels.append_array(_labyrinth_levels)
 	_planned_levels.append_array(_doors_beginners_level)
@@ -50,6 +49,9 @@ func _ready() -> void:
 	_infinite_levels.append("res://scenes/levels/beginner/LevelBeginner03.tscn")
 	_infinite_levels.append_array(_labyrinth_levels)
 	_infinite_levels.append_array(_doors_level)
+
+	var progression = ProgressionService.data
+	_levels_done_count = progression.levels_done
 
 
 func _process(_delta):
@@ -68,11 +70,13 @@ func _load_next_level() -> BasicLevel:
 		prints("Planned level", _levels_done_count)
 		var next_level = _planned_levels[_levels_done_count]
 		_levels_done_count += 1
+		_update_progression()
 		return load(next_level).instantiate()
 	else:
 		_levels_done_count += 1
 		var next_id = randi_range(0, _infinite_levels.size() - 1)
 		prints("Next random level", next_id)
+		_update_progression()
 		return load(_infinite_levels[next_id]).instantiate()
 
 
@@ -95,6 +99,12 @@ func _unload_old_levels() -> void:
 			_move_stop_wall_to(level.end_position)
 			_levels.erase(level)
 			level.queue_free()
+
+
+func _update_progression():
+	var progression = ProgressionService.data
+	progression.levels_done = _levels_done_count - 1
+	ProgressionService.save(progression)
 
 
 func _move_stop_wall_to(node: Node2D) -> void:
