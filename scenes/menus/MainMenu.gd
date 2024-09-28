@@ -27,6 +27,8 @@ func _ready() -> void:
 		continue_button.visible = false
 		start_button.grab_focus()
 
+	GlobalMusicPlayer.play()
+
 
 func _on_continue_button_pressed() -> void:
 	var progression = ProgressionService.data
